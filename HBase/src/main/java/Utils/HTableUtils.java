@@ -1,4 +1,4 @@
-package com.mvn.hadoop.Utils;
+package Utils;
 
 
 import org.apache.hadoop.conf.Configuration;

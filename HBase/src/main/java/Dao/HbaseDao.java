@@ -1,4 +1,4 @@
-package com.mvn.hadoop.Hbase;
+package Dao;
 
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Put;

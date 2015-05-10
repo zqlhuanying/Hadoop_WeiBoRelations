@@ -1,7 +1,7 @@
-package com.mvn.hadoop;
+package LoadIntoHbase;
 
-import com.mvn.hadoop.Hbase.HbaseDao;
-import com.mvn.hadoop.Hbase.HbaseDaoImpl;
+import Dao.HbaseDao;
+import Dao.HbaseDaoImpl;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.io.IntWritable;
@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Created by root on 15-4-27.
  */
-public class WeiBoMap extends Mapper<LongWritable, Text, Text, IntWritable> {
+public class LoadMap extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     HbaseDao hbaseDao = new HbaseDaoImpl();
 

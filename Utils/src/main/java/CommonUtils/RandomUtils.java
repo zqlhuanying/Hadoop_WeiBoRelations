@@ -1,4 +1,4 @@
-package com.mvn.hadoop.Utils;
+package CommonUtils;
 
 import java.util.Random;
 

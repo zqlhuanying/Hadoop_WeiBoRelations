@@ -1,21 +1,18 @@
-package com.mvn.hadoop;
+package LoadIntoHbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.NullOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 /**
  * Created by root on 15-4-27.
  */
-public class WeiBoRelations extends Configured implements Tool{
+public class LoadIntoHbase extends Configured implements Tool{
 
     @Override
     public int run(String[] args) throws Exception{
@@ -25,8 +22,8 @@ public class WeiBoRelations extends Configured implements Tool{
             /** 不加下面这行代码，在伪分布式模式即mapreduce.framework.name='yarn'下会提示找不到Map类
              *  但是在单机模式或mapreduce.framework.name='local'模式下却是可以运行
              */
-            job.setJarByClass(WeiBoRelations.class);
-            job.setMapperClass(WeiBoMap.class);
+            job.setJarByClass(LoadIntoHbase.class);
+            job.setMapperClass(LoadMap.class);
             //job.setReducerClass(Reduce.class);
             job.setNumReduceTasks(0);
             job.setInputFormatClass(TextInputFormat.class);
@@ -48,6 +45,6 @@ public class WeiBoRelations extends Configured implements Tool{
 
     public static void main(String[] args) throws Exception{
         Configuration conf = new Configuration();
-        ToolRunner.run(conf, new WeiBoRelations(), args);
+        ToolRunner.run(conf, new LoadIntoHbase(), args);
     }
 }

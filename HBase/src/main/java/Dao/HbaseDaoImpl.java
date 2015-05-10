@@ -1,7 +1,7 @@
-package com.mvn.hadoop.Hbase;
+package Dao;
 
-import com.mvn.hadoop.Utils.HTableUtils;
-import com.mvn.hadoop.Utils.RandomUtils;
+import CommonUtils.RandomUtils;
+import Utils.HTableUtils;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.client.Put;
@@ -22,7 +22,7 @@ public class HbaseDaoImpl implements HbaseDao {
         Get get = new Get(Bytes.toBytes(userid));
         Result result = find("users", get);
         // 若HBase中已存在，则直接返回，否则需要将数据插入HBase
-        if(!result.isEmpty()) return result.getValue(Bytes.toBytes("info"), Bytes.toBytes("name")).toString();
+        if(result != null && !result.isEmpty()) return result.getValue(Bytes.toBytes("info"), Bytes.toBytes("name")).toString();
         String username = RandomUtils.random();
         Put put = new Put(Bytes.toBytes(userid));
         put.add(Bytes.toBytes("info"), Bytes.toBytes("name"), Bytes.toBytes(username));
