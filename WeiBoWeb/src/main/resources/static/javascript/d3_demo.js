@@ -2,7 +2,7 @@
  * Created by root on 15-5-10.
  */
 var dataset = {
-    nodes: [
+    "nodes": [
         { name: "Adam" },
         { name: "Bob" },
         { name: "Carrie" },
@@ -14,7 +14,7 @@ var dataset = {
         { name: "Iris" },
         { name: "Jerry" }
     ],
-    edges: [
+    "edges": [
         { source: 0, target: 1 },
         { source: 0, target: 2 },
         { source: 0, target: 3 },

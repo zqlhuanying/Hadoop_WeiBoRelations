@@ -16,10 +16,12 @@
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
     </listener>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:config/spring.xml</param-value>
     </context-param>
+
 
     <servlet>
         <servlet-name>mvc</servlet-name>
