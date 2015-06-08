@@ -16,6 +16,13 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-core</artifactId>
             <version>1.2.0</version>
+            <exclusions>
+                <!--排除所有的依赖，世界都安静了-->
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -23,5 +30,7 @@
             <artifactId>hbase</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+
     </dependencies>
 </project>

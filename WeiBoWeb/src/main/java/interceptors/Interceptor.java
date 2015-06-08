@@ -1,7 +1,7 @@
 package interceptors;
 
 import Context.RelationsContext;
-import Utils.WebUtil;
+import WUtils.WebUtil;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

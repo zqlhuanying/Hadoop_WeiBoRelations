@@ -1,4 +1,4 @@
-package Utils;
+package HUtils;
 
 
 import org.apache.hadoop.conf.Configuration;

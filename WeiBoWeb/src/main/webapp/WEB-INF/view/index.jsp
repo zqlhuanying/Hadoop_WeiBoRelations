@@ -13,7 +13,14 @@
 </body>
 <form id="relations" method="post">
     <input type="text" name="name" id="name" />
-    <input type="submit" value="提交">
+    <input type="submit" value="SearchByAPI" onclick="check(false);"/>
+    <input type="submit" value="SearchByMR" onclick="check(true);"/>
+    <input type="hidden" name="isByMR" id="isByMR"/>
 </form>
 <script type="text/javascript" src="static/javascript/index.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+    function check(isByMR){
+        $("#isByMR").val(isByMR);
+    }
+</script>
 </html>

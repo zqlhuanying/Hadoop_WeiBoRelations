@@ -1,4 +1,4 @@
-package Utils;
+package WUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;

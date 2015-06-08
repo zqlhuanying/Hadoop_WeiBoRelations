@@ -1,7 +1,7 @@
 package Dao;
 
 import CommonUtils.RandomUtils;
-import Utils.HTableUtils;
+import HUtils.HTableUtils;
 
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.CompareFilter;

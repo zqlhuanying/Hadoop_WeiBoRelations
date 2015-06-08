@@ -1,4 +1,4 @@
-package Beans;
+package Beans.ForceBeans;
 
 /**
  * Created by root on 15-5-17.

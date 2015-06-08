@@ -8,7 +8,8 @@ $(function(){
             url : "showRelations/find",
             type : "post",
             data : {
-                name : $("#name").val()
+                name : $("#name").val(),
+                isByMR : $("#isByMR").val()
             },
             dataType : "json",
             beforeSubmit : valid,

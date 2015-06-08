@@ -9,7 +9,7 @@
 
     <!--  开启注解  -->
     <mvc:annotation-driven/>
-    <context:component-scan base-package="/,Dao"/>
+    <context:component-scan base-package="/,Dao,Service"/>
     <aop:aspectj-autoproxy/>
 
     <import resource="spring-mvc.xml"></import>
