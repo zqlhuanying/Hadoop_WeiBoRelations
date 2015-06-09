@@ -19,6 +19,12 @@ public class ClassPathUtil {
         }
     }
 
+    // 根据资源名获取资源所在的路径,resourceName格式(文件夹/文件名.后缀名)
+    public static String getResourcePath(String resourceName){
+        ClassPathUtil classPathUtil = new ClassPathUtil();
+        return getMyPath(classPathUtil.getClass().getResource(resourceName));
+    }
+
     private static String getMyPath(URL url){
         String path = url.getPath();
 
@@ -44,7 +50,14 @@ public class ClassPathUtil {
 
     public static void main(String[] args){
         System.out.println(ClassPathUtil.getClassPath("SearchRelationsByName.SearchRelationsByName"));
-        System.out.println(ClassPathUtil.getClassPath("Dao.HbaseDaoImpl"));
-        System.out.println(ClassPathUtil.getClassPath("ClassPathUtil"));
+        System.out.println(ClassPathUtil.getResourcePath("/SearchRelationsByName/SearchRelationsByName.class"));
+        System.out.println(ClassPathUtil.getResourcePath("/static/shell/searchRelationsShell.sh"));
+        /*System.out.println(System.getProperty("java.class.path"));
+        System.out.println(System.getProperty("java.library.path"));
+        System.out.println(System.getProperty("java.io.tmpdir"));
+        System.out.println(System.getProperty("java.ext.dirs"));
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(System.getProperty("sun.boot.class.path"));
+        System.out.println(System.getProperty("user.home"));*/
     }
 }

@@ -35,17 +35,22 @@ public class SearchRelationsByMRImpl implements SearchRelations {
         String mapReduceMainClass="SearchRelationsByName.SearchRelationsByName";
         String mapReduceJar = ClassPathUtil.getClassPath(mapReduceMainClass);
         String outputPath = "/WeiBoRelations/output";
-        String shellPath = "/home/zhuang/IdeaProjects/Com.Mvn.Hadoop/WeiBoRelations/WeiBoWeb/src/main/resources/static/shell/searchRelationsShell.sh";
+        String searchRelationsShell = "/static/shell/searchRelationsShell.sh";
+        String shellPath = ClassPathUtil.getResourcePath(searchRelationsShell);
+        //String shellPath = "/home/zhuang/IdeaProjects/Com.Mvn.Hadoop/WeiBoRelations/WeiBoWeb/src/main/resources/static/shell/searchRelationsShell.sh";
 
         execShell(shellPath, name, mapReduceJar, mapReduceMainClass, outputPath);
 
         LOGGER.debug("使用HBase MapReduce查询终止于：" + DateUtil.date2String(new Date()));
 
         // 从HDFS上拷贝文件
-        String copyFilePath = "/home/zhuang/IdeaProjects/Com.Mvn.Hadoop/WeiBoRelations/WeiBoWeb/src/main/resources/static/shell/copyFileFromHdfs.sh";
+        String copyFileShell = "/static/shell/copyFileFromHdfs.sh";
+        String copyFilePath = ClassPathUtil.getResourcePath(copyFileShell);
+        //String copyFilePath = "/home/zhuang/IdeaProjects/Com.Mvn.Hadoop/WeiBoRelations/WeiBoWeb/src/main/resources/static/shell/copyFileFromHdfs.sh";
         String filename = "part-r-00000";
         String fromPath = outputPath + "/result/" + filename;
-        String destPath = "/home/zhuang/IdeaProjects/Com.Mvn.Hadoop/WeiBoRelations/WeiBoWeb/download";
+        String destPath = FileUtil.getParent(this.getClass().getResource("/").getPath()) + "/download";
+        //String destPath = "/home/zhuang/IdeaProjects/Com.Mvn.Hadoop/WeiBoRelations/WeiBoWeb/download";
 
         FileUtil.mkdirs(destPath);
 
@@ -76,6 +81,8 @@ public class SearchRelationsByMRImpl implements SearchRelations {
     }
 
     private void execShell(String shellPath, String... args){
+        sureExecPermission(shellPath);
+
         String[] cmd = new String[args.length + 1];
         cmd[0] = shellPath;
         for(int i = 1; i <= args.length; i++){
@@ -89,6 +96,20 @@ public class SearchRelationsByMRImpl implements SearchRelations {
         } catch (Exception ex){
             ex.printStackTrace();
             LOGGER.debug("执行位于" + shellPath + "处的脚本有误.....");
+        }
+    }
+
+    // 确保shell文件具有执行权限
+    private void sureExecPermission(String shellPath){
+        String cmd = "chmod 744 " + shellPath;
+
+        try{
+            Process p = Runtime.getRuntime().exec(cmd);
+            // 阻塞当前进程
+            p.waitFor();
+        } catch (Exception ex){
+            ex.printStackTrace();
+            LOGGER.debug("修改" + shellPath + "文件权限有误.....");
         }
     }
 }

@@ -13,4 +13,9 @@ public class FileUtil {
             file.mkdirs();
         }
     }
+
+    public static String getParent(String path){
+        File file = new File(path);
+        return file.getParent();
+    }
 }

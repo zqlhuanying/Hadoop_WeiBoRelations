@@ -4,6 +4,7 @@
 $(function(){
 
     $("#relations").submit(function(){
+        clearData();
         $(this).ajaxSubmit({
             url : "showRelations/find",
             type : "post",
@@ -20,6 +21,10 @@ $(function(){
         return false;
     });
 });
+
+function clearData(){
+    d3.select("body").select("svg").remove();
+}
 
 function valid(){
     var name = $("#name").val();
